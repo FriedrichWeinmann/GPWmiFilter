@@ -3,7 +3,7 @@
 	ModuleToProcess = 'GPWmiFilter.psm1'
 	
 	# Version number of this module.
-	ModuleVersion = '1.0.0'
+	ModuleVersion = '1.0.1'
 	
 	# ID used to uniquely identify this module
 	GUID = '7f95af7a-99e4-4a74-a4e6-9eb41b8f82f8'
@@ -26,7 +26,7 @@
 	# Modules that must be imported into the global environment prior to importing
 	# this module
 	RequiredModules = @(
-		@{ ModuleName='PSFramework'; ModuleVersion='1.0.13' }
+		@{ ModuleName='PSFramework'; ModuleVersion='1.0.19' }
 	)
 	
 	# Assemblies that must be loaded prior to importing this module

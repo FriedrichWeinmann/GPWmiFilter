@@ -5,6 +5,7 @@
 	
 	'Get-DomainController.DCFound'			     = 'Resolved {0} and connected to {1}'
 	
+	'Get-GPWmiFilter.FailedADAccess'			 = 'Failed to establish contact with {0}'
 	'Get-GPWmiFilter.SearchGuid'				 = 'Searching for AD GPO WMI Filter Object based on Guid: {0}'
 	'Get-GPWmiFilter.SearchName'				 = 'Searching for AD GPO WMI Filter Object based on Name: {0}'
 	
@@ -12,6 +13,7 @@
 	'New-GPWmiFilter.NoFilter'				     = 'At least one Expression Method is required to create a WMI Filter.'
 	'New-GPWmiFilter.CreatingFilter'			 = 'Creating GPO WMI Filter: {0}'
 	
+	'Remove-GPWmiFilter.FailedADAccess'		     = 'Failed to establish contact with {0}'
 	'Remove-GPWmiFilter.Delete'				     = 'Removing WMI Filter: {0}'
 	
 	'Rename-GPWmiFilter.FailedADAccess'		     = 'Failed to establish contact with {0}'
