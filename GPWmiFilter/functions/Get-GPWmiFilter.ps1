@@ -53,10 +53,19 @@
 	
 	begin
 	{
+		#region Resolve Server
+		try { $PSBoundParameters.Server = Get-DomainController -Server $Server -Credential $Credential }
+		catch
+		{
+			Stop-PSFFunction -String 'Get-GPWmiFilter.FailedADAccess' -StringValues $Server -EnableException $EnableException -ErrorRecord $_
+			return
+		}
+		#endregion Resolve Server
+		
 		$parameters = @{
 			Properties = "msWMI-Name", "msWMI-Parm1", "msWMI-Parm2", "msWMI-Author", "msWMI-ID", "Modified", 'nTSecurityDescriptor'
+			Server = $PSBoundParameters.Server
 		}
-		if (Test-PSFParameterBinding -ParameterName Domain) { $parameters['Server'] = $Server }
 		if (Test-PSFParameterBinding -ParameterName Credential) { $parameters['Credential'] = $Credential }
 		
 		$selectProperties = @(
@@ -75,6 +84,8 @@
 	}
 	process
 	{
+		if (Test-PSFFunctionInterrupt) { return }
+		
 		if ($Guid)
 		{
 			foreach ($guidItem in $Guid)

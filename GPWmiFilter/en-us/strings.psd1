@@ -5,6 +5,7 @@
 	
 	'Get-DomainController.DCFound'			     = 'Resolved {0} and connected to {1}'
 	
+	'Get-GPWmiFilter.FailedADAccess'			 = 'Failed to establish contact with {0}'
 	'Get-GPWmiFilter.SearchGuid'				 = 'Searching for AD GPO WMI Filter Object based on Guid: {0}'
 	'Get-GPWmiFilter.SearchName'				 = 'Searching for AD GPO WMI Filter Object based on Name: {0}'
 	
