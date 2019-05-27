@@ -27,7 +27,7 @@
 		Get WMI filter(s) with the name 'Virtual Machines'
 	
 	.EXAMPLE
-		PS C:\> Get-GPWmiFilter -All
+		PS C:\> Get-GPWmiFilter
 		
 		Get all WMI filters in current domain
 #>
