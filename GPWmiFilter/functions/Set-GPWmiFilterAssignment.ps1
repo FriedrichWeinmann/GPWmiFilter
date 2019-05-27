@@ -29,6 +29,7 @@
 	
 		Assigns the WMI Filter "WIndows 10" to the GPO "01_A_OU_1"
 #>
+	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]
 	[CmdletBinding()]
 	Param (
 		[Parameter(Mandatory = $true, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true)]
@@ -60,7 +61,7 @@
 		#endregion Resolve Server
 		
 		$adParameters = $PSBoundParameters | ConvertTo-PSFHashtable -Include Server, Credential
-		$domainName = (Get-ADDOmain @adParameters).DNSRoot
+		$domainName = (Get-ADDomain @adParameters).DNSRoot
 		
 		#region Handle Explicit Filter input
 		$filterExplicit = $false

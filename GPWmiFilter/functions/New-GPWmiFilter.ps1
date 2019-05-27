@@ -11,6 +11,9 @@
 	.PARAMETER Name
 		The name of new WMI filter.
 	
+	.PARAMETER Filter
+		The wmi filter query to use as condition for the filter.
+	
 	.PARAMETER Expression
 		The expression(s) of WQL query in new WMI filter. Pass an array to this parameter if multiple WQL queries applied.
 	
