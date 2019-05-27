@@ -13,6 +13,7 @@
 	'New-GPWmiFilter.NoFilter'				     = 'At least one Expression Method is required to create a WMI Filter.'
 	'New-GPWmiFilter.CreatingFilter'			 = 'Creating GPO WMI Filter: {0}'
 	
+	'Remove-GPWmiFilter.FailedADAccess'		     = 'Failed to establish contact with {0}'
 	'Remove-GPWmiFilter.Delete'				     = 'Removing WMI Filter: {0}'
 	
 	'Rename-GPWmiFilter.FailedADAccess'		     = 'Failed to establish contact with {0}'
