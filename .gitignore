@@ -1,0 +1,22 @@
+﻿
+# ignore the settings folder and files for VSCode and PSS
+.vscode/*
+*.psproj
+*TempPoint*
+
+# Ignore staging info from Visual Studio
+library/GPWmiFilter/.vs/*
+library/GPWmiFilter/GPWmiFilter/bin/*
+library/GPWmiFilter/GPWmiFilter/obj/*
+
+# ignore PowerShell Studio MetaData
+GPWmiFilter/GPWmiFilter.psproj
+GPWmiFilter/GPWmiFilter.psproj.bak
+GPWmiFilter/GPWmiFilter.psprojs
+GPWmiFilter/GPWmiFilter.psproj
+
+# ignore the TestResults
+TestResults/*
+
+# ignore the publishing Directory
+publish/*

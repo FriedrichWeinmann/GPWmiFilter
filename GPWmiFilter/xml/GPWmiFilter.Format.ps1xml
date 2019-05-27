@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-16"?>
+<Configuration>
+	<ViewDefinitions>
+		<!-- GroupPolicy.WMIFilter -->
+        <View>
+            <Name>GroupPolicy.WMIFilter</Name>
+            <ViewSelectedBy>
+                <TypeName>GroupPolicy.WMIFilter</TypeName>
+            </ViewSelectedBy>
+            <TableControl>
+                <AutoSize/>
+                <TableHeaders>
+                    <TableColumnHeader/>
+                    <TableColumnHeader/>
+                    <TableColumnHeader/>
+                </TableHeaders>
+                <TableRowEntries>
+                    <TableRowEntry>
+                        <TableColumnItems>
+                            <TableColumnItem>
+                                <PropertyName>Name</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <PropertyName>Description</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <PropertyName>Filter</PropertyName>
+                            </TableColumnItem>
+                        </TableColumnItems>
+                    </TableRowEntry>
+                </TableRowEntries>
+            </TableControl>
+        </View>
+	</ViewDefinitions>
+</Configuration>
