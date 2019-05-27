@@ -125,7 +125,7 @@
 			"msWMI-Author"		     = (Get-PSFConfigValue -FullName 'GPWmiFilter.Author' -Fallback "$($env:USERNAME)@$($env:USERDNSDOMAIN)")
 			"msWMI-ID"			     = $wmiGuid
 			"instanceType"		     = 4
-			"distinguishedname"	     = "CN=$wmiGuid,CN=SOM,CN=WMIPolicy,CN=System,$defaultNamingContext"
+			"distinguishedname"	     = "CN=$wmiGuid,CN=SOM,CN=WMIPolicy,CN=System,$namingContext"
 			"msWMI-ChangeDate"	     = $creationDate
 			"msWMI-CreationDate"	 = $creationDate
 		}
