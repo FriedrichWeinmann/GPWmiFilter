@@ -60,20 +60,25 @@
 	
 	begin
 	{
-		$adParameters = @{
-			Server	    = $Server
-			Confirm	    = $false
-			ErrorAction = 'Stop'
+		#region Resolve Server
+		try { $PSBoundParameters.Server = Get-DomainController -Server $Server -Credential $Credential }
+		catch
+		{
+			Stop-PSFFunction -String 'Remove-GPWmiFilter.FailedADAccess' -StringValues $Server -EnableException $EnableException -ErrorRecord $_
+			return
 		}
-		if (Test-PSFParameterBinding -ParameterName Credential) { $adParameters['Credential'] = $Credential }
+		#endregion Resolve Server
+		
+		$adParameters = $PSBoundParameters | ConvertTo-PSFHashtable -Include Server, Credential
 	}
 	process
 	{
+		if (Test-PSFFunctionInterrupt) { return }
 		$getParameters = $PSBoundParameters | ConvertTo-PSFHashtable -Include Guid, Name, Server, Credential
 		foreach ($wmiFilter in (Get-GPWmiFilter @getParameters))
 		{
 			Invoke-PSFProtectedCommand -ActionString Remove-GPWmiFilter.Delete -ActionStringValues $wmiFilter.Name -Target $wmiFilter.ID -ScriptBlock {
-				Remove-ADObject -Identity $wmiFilter.DistinguishedName @adParameters
+				Remove-ADObject -Identity $wmiFilter.DistinguishedName @adParameters -Confirm:$false -ErrorAction Stop
 			} -EnableException $EnableException.ToBool() -Continue -PSCmdlet $PSCmdlet
 		}
 	}

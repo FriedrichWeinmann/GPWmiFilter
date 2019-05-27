@@ -125,7 +125,7 @@
 			"msWMI-Author"		     = (Get-PSFConfigValue -FullName 'GPWmiFilter.Author' -Fallback "$($env:USERNAME)@$($env:USERDNSDOMAIN)")
 			"msWMI-ID"			     = $wmiGuid
 			"instanceType"		     = 4
-			"distinguishedname"	     = "CN=$wmiGuid,CN=SOM,CN=WMIPolicy,CN=System,$defaultNamingContext"
+			"distinguishedname"	     = "CN=$wmiGuid,CN=SOM,CN=WMIPolicy,CN=System,$namingContext"
 			"msWMI-ChangeDate"	     = $creationDate
 			"msWMI-CreationDate"	 = $creationDate
 		}
@@ -139,7 +139,7 @@
 		$paramNewADObject += $adParameters
 		Invoke-PSFProtectedCommand -ActionString 'New-GPWmiFilter.CreatingFilter' -ActionStringValues $Name -ScriptBlock {
 			New-ADObject @paramNewADObject
-			Get-GPWmiFilter -Guid $wmiGuid
+			Get-GPWmiFilter -Guid $wmiGuid @adParameters
 		} -Target $Name -EnableException $EnableException.ToBool() -PSCmdlet $PSCmdlet
 	}
 }
