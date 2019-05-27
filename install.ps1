@@ -45,7 +45,7 @@ Param (
 $ModuleName = "GPWmiFilter"
 
 # Base path to the github repository
-$BaseUrl = "https://github.com/<InsertUsernameHere>/GPWmiFilter"
+$BaseUrl = "https://github.com/FriedrichWeinmann/GPWmiFilter"
 
 # If the module is in a subfolder of the cloned repository, specify relative path here. Empty string to skip.
 $SubFolder = "GPWmiFilter"
