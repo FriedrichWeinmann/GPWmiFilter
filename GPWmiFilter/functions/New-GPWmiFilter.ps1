@@ -139,7 +139,7 @@
 		$paramNewADObject += $adParameters
 		Invoke-PSFProtectedCommand -ActionString 'New-GPWmiFilter.CreatingFilter' -ActionStringValues $Name -ScriptBlock {
 			New-ADObject @paramNewADObject
-			Get-GPWmiFilter -Guid $wmiGuid
+			Get-GPWmiFilter -Guid $wmiGuid @adParameters
 		} -Target $Name -EnableException $EnableException.ToBool() -PSCmdlet $PSCmdlet
 	}
 }
