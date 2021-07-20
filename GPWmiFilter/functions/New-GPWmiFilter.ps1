@@ -59,6 +59,7 @@
 		
 		Create a WMI filter for 32-bit work station and link it to a new GPO named "Test GPO".
 #>
+	[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSReviewUnusedParameter', '')]
 	[CmdletBinding(SupportsShouldProcess = $true, ConfirmImpact = 'Medium')]
 	param
 	(
