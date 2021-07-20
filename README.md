@@ -13,3 +13,9 @@ Use this module to read, create, edit, delete or migrate WMI Filters of any kind
 ```powershell
 Get-GPWmiFilter
 ```
+
+> Copy all WMI Filters from one domain to another
+
+```powershell
+Get-GPWmiFilter -Server fabrikam.com | New-GPWmiFilter -Server fabrikam.com -Credential $cred
+```

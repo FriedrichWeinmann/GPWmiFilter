@@ -15,6 +15,11 @@
 	
 	.PARAMETER Filter
 		The expression(s) of WQL query in new WMI filter. Pass an array to this parameter if multiple WQL queries applied.
+
+	.PARAMETER Namespace
+		The namespace of the wmi filter query.
+		Defaults to: 'root\CIMv2'
+		Note: This parameter is ignored for individual filter conditions that include their own namespace (<namespace>;<filter>).
 	
 	.PARAMETER Description
 		The description text of the WMI filter.
@@ -64,6 +69,10 @@
 		[Alias('Expression')]
 		[string[]]
 		$Filter,
+
+		[Parameter(ValueFromPipelineByPropertyName = $true)]
+		[string]
+		$Namespace = 'root\CIMv2',
 		
 		[Parameter(ValueFromPipelineByPropertyName = $true)]
 		[string]
@@ -130,7 +139,8 @@
 					$filterString = '{0};' -f $Filter.Count
 					foreach ($filterItem in $Filter)
 					{
-						$filterString += "3;10;{0};WQL;root\CIMv2;{1};" -f $filterItem.Length, $filterItem
+						if ($filterItem -match '^root\\.+?;|^root;') { $filterString += "3;10;{0};WQL;{1};" -f ($filterItem -split ";",2)[1].Length, $filterItem }
+						else { $filterString += "3;10;{0};WQL;$Namespace;{1};" -f $filterItem.Length, $filterItem }
 					}
 					$adAttributes['msWMI-Parm2'] = $filterString
 				}
