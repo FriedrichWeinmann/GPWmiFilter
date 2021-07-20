@@ -13,6 +13,11 @@
 	
 	.PARAMETER Filter
 		The wmi filter query to use as condition for the filter.
+
+	.PARAMETER Namespace
+		The namespace of the wmi filter query.
+		Defaults to: 'root\CIMv2'
+		Note: This parameter is ignored for individual filter conditions that include their own namespace (<namespace>;<filter>).
 	
 	.PARAMETER Expression
 		The expression(s) of WQL query in new WMI filter. Pass an array to this parameter if multiple WQL queries applied.
@@ -54,6 +59,7 @@
 		
 		Create a WMI filter for 32-bit work station and link it to a new GPO named "Test GPO".
 #>
+	[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSReviewUnusedParameter', '')]
 	[CmdletBinding(SupportsShouldProcess = $true, ConfirmImpact = 'Medium')]
 	param
 	(
@@ -67,6 +73,10 @@
 		[Alias('Expression')]
 		[string[]]
 		$Filter,
+
+		[Parameter(ValueFromPipelineByPropertyName = $true)]
+		[string]
+		$Namespace = 'root\CIMv2',
 		
 		[Parameter(ValueFromPipelineByPropertyName = $true)]
 		[string]
@@ -115,7 +125,8 @@
 		$creationDate = (Get-Date).ToUniversalTime().ToString("yyyyMMddhhmmss.ffffff-000")
 		$filterString = "{0};" -f $Filter.Count.ToString()
 		$Filter | ForEach-Object {
-			$filterString += "3;10;{0};WQL;root\CIMv2;{1};" -f $_.Length, $_
+			if ($_ -match '^root\\.+?;|^root;') { $filterString += "3;10;{0};WQL;{1};" -f ($_ -split ";",2)[1].Length, $_ }
+			else { $filterString += "3;10;{0};WQL;$Namespace;{1};" -f $_.Length, $_ }
 		}
 		$attributes = @{
 			"showInAdvancedViewOnly" = "TRUE"
