@@ -125,8 +125,8 @@
 		$creationDate = (Get-Date).ToUniversalTime().ToString("yyyyMMddhhmmss.ffffff-000")
 		$filterString = "{0};" -f $Filter.Count.ToString()
 		$Filter | ForEach-Object {
-			if ($_ -match '^root\\.+?;|^root;') { $filterString += "3;10;{0};WQL;{1};" -f ($_ -split ";",2)[1].Length, $_ }
-			else { $filterString += "3;10;{0};WQL;$Namespace;{1};" -f $_.Length, $_ }
+			if ($_ -match '^root\\.+?;|^root;') { $filterString += "3;{0};{1};WQL;{2};" -f ($_ -split ";",2)[0].Length, ($_ -split ";",2)[1].Length, $_ }
+			else { $filterString += "3;$($Namespace.Length);{0};WQL;$Namespace;{1};" -f $_.Length, $_ }
 		}
 		$attributes = @{
 			"showInAdvancedViewOnly" = "TRUE"

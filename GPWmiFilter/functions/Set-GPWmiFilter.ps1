@@ -139,8 +139,8 @@
 					$filterString = '{0};' -f $Filter.Count
 					foreach ($filterItem in $Filter)
 					{
-						if ($filterItem -match '^root\\.+?;|^root;') { $filterString += "3;10;{0};WQL;{1};" -f ($filterItem -split ";",2)[1].Length, $filterItem }
-						else { $filterString += "3;10;{0};WQL;$Namespace;{1};" -f $filterItem.Length, $filterItem }
+						if ($filterItem -match '^root\\.+?;|^root;') { $filterString += "3;{0};{1};WQL;{2};" -f ($filterItem -split ";",2)[0].Length, ($filterItem -split ";",2)[1].Length, $filterItem }
+						else { $filterString += "3;$($Namespace.Length);{0};WQL;$Namespace;{1};" -f $filterItem.Length, $filterItem }
 					}
 					$adAttributes['msWMI-Parm2'] = $filterString
 				}
