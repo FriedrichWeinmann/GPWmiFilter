@@ -131,7 +131,6 @@
 		$attributes = @{
 			"showInAdvancedViewOnly" = "TRUE"
 			"msWMI-Name"			 = $Name
-			"msWMI-Parm1"		     = $Description
 			"msWMI-Parm2"		     = $filterString
 			"msWMI-Author"		     = (Get-PSFConfigValue -FullName 'GPWmiFilter.Author' -Fallback "$($env:USERNAME)@$($env:USERDNSDOMAIN)")
 			"msWMI-ID"			     = $wmiGuid
@@ -139,6 +138,9 @@
 			"distinguishedname"	     = "CN=$wmiGuid,CN=SOM,CN=WMIPolicy,CN=System,$namingContext"
 			"msWMI-ChangeDate"	     = $creationDate
 			"msWMI-CreationDate"	 = $creationDate
+		}
+		if ($Description) {
+			 $attributes."msWMI-Parm1" = $Description
 		}
 		
 		$paramNewADObject = @{

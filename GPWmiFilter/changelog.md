@@ -1,5 +1,9 @@
 ﻿# Changelog
 
+## 1.0.5 (2022-06-05)
+
++ Fix: New-GPWmiFilter - fails when not specifying a description
+
 ## 1.0.4 (2021-07-27)
 
 + Fix: Namespaces - fixed issue with filter strings on non-default namespaces

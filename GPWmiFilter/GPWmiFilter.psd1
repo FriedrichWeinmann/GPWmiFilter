@@ -3,7 +3,7 @@
 	ModuleToProcess = 'GPWmiFilter.psm1'
 	
 	# Version number of this module.
-	ModuleVersion = '1.0.4'
+	ModuleVersion = '1.0.5'
 	
 	# ID used to uniquely identify this module
 	GUID = '7f95af7a-99e4-4a74-a4e6-9eb41b8f82f8'
